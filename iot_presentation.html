@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet de las Cosas (IoT)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin: 20px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 600px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin: 25px 0 15px 0;
+        }
+        
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-left: 30px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .icon-item {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .icon-item h3 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .emoji {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active">
+            <h1>🌐 Internet de las Cosas</h1>
+            <h1 style="font-size: 2em;">(IoT)</h1>
+            <p class="subtitle" style="margin-top: 80px; font-size: 1.8em;">Técnico en Ingeniería de Desarrollo de Software</p>
+            <p class="subtitle" style="font-size: 1.4em; margin-top: 40px;">Clase Virtual Asíncrona - Día 5</p>
+            <p class="subtitle" style="font-size: 1.2em; margin-top: 60px; color: #999;">Diciembre 2024</p>
+        </div>
+
+        <!-- Slide 2: ¿Qué es IoT? -->
+        <div class="slide">
+            <h2>¿Qué es el Internet de las Cosas?</h2>
+            <p style="font-size: 1.5em; margin: 30px 0;">El <strong>Internet de las Cosas (IoT)</strong> es la red de dispositivos físicos conectados a internet que recopilan e intercambian datos de forma automática.</p>
+            
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <h3>🔗 Conectividad</h3>
+                    <p>Objetos cotidianos conectados a la red</p>
+                </div>
+                <div class="icon-item">
+                    <h3>📊 Datos</h3>
+                    <p>Recopilación e intercambio continuo de información</p>
+                </div>
+                <div class="icon-item">
+                    <h3>🤖 Automatización</h3>
+                    <p>Comunicación máquina a máquina (M2M)</p>
+                </div>
+                <div class="icon-item">
+                    <h3>⚡ Inteligencia</h3>
+                    <p>Decisiones autónomas sin intervención humana</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Componentes del IoT -->
+        <div class="slide">
+            <h2>Componentes Principales del IoT</h2>
+            
+            <h3>🎯 1. Sensores y Dispositivos</h3>
+            <p>Recopilan datos del entorno físico (temperatura, movimiento, luz, etc.)</p>
+            
+            <h3>📡 2. Conectividad</h3>
+            <p>Tecnologías: WiFi, Bluetooth, 5G, LoRaWAN, Zigbee</p>
+            
+            <h3>☁️ 3. Procesamiento de Datos</h3>
+            <p>Edge Computing (en el dispositivo) y Cloud Computing (en la nube)</p>
+            
+            <h3>📱 4. Interfaz de Usuario</h3>
+            <p>Aplicaciones móviles, dashboards web, asistentes de voz</p>
+        </div>
+
+        <!-- Slide 4: Estadísticas -->
+        <div class="slide">
+            <h2>IoT en Números</h2>
+            
+            <div class="stat-box">
+                <div class="stat-number">18,800 millones</div>
+                <p style="font-size: 1.3em;">Dispositivos IoT conectados en 2024</p>
+            </div>
+            
+            <div class="stat-box" style="background: linear-gradient(135deg, #764ba2, #667eea);">
+                <div class="stat-number">40,000 millones</div>
+                <p style="font-size: 1.3em;">Proyección para el año 2030</p>
+            </div>
+            
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="highlight">
+                    <p><strong>Crecimiento anual:</strong> 13-15% en 2024</p>
+                </div>
+                <div class="highlight">
+                    <p><strong>Mercado global:</strong> $2.47 billones USD en 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Aplicaciones Cotidianas -->
+        <div class="slide">
+            <h2>Aplicaciones en la Vida Cotidiana</h2>
+            
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <h3><span class="emoji">🏠</span>Hogar Inteligente</h3>
+                    <p>Termostatos, luces LED, cerraduras digitales, electrodomésticos conectados, sistemas de seguridad</p>
+                </div>
+                
+                <div class="icon-item">
+                    <h3><span class="emoji">❤️</span>Salud y Bienestar</h3>
+                    <p>Smartwatches, monitores cardíacos, medidores de glucosa, rastreadores de actividad física</p>
+                </div>
+                
+                <div class="icon-item">
+                    <h3><span class="emoji">🚗</span>Transporte</h3>
+                    <p>Vehículos conectados, GPS inteligente, sistemas de estacionamiento, navegación en tiempo real</p>
+                </div>
+                
+                <div class="icon-item">
+                    <h3><span class="emoji">🏙️</span>Ciudades Inteligentes</h3>
+                    <p>Gestión de tráfico, alumbrado público eficiente, monitoreo ambiental, gestión de residuos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Aplicaciones Industriales -->
+        <div class="slide">
+            <h2>Aplicaciones en la Industria</h2>
+            
+            <h3>🏭 Manufactura e Industria 4.0</h3>
+            <p>Mantenimiento predictivo de maquinaria, automatización de procesos, control de calidad en tiempo real</p>
+            
+            <h3>🌾 Agricultura Inteligente</h3>
+            <p>Riego automatizado, monitoreo de cultivos, control de plagas, optimización de recursos</p>
+            
+            <h3>📦 Logística y Cadena de Suministro</h3>
+            <p>Rastreo de mercancías en tiempo real, gestión de inventarios, optimización de rutas de entrega</p>
+            
+            <h3>🛒 Comercio Minorista</h3>
+            <p>Gestión inteligente de inventarios, experiencias de compra personalizadas, análisis de comportamiento del cliente</p>
+        </div>
+
+        <!-- Slide 7: Tecnologías Clave -->
+        <div class="slide">
+            <h2>Tecnologías que Potencian el IoT</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3>Protocolos de Comunicación</h3>
+                    <ul>
+                        <li>MQTT (Message Queue Telemetry Transport)</li>
+                        <li>CoAP (Constrained Application Protocol)</li>
+                        <li>HTTP/HTTPS</li>
+                        <li>WebSocket</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Plataformas IoT</h3>
+                    <ul>
+                        <li>AWS IoT Core</li>
+                        <li>Microsoft Azure IoT</li>
+                        <li>Google Cloud IoT</li>
+                        <li>IBM Watson IoT</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="two-column" style="margin-top: 30px;">
+                <div>
+                    <h3>Hardware</h3>
+                    <ul>
+                        <li>Arduino</li>
+                        <li>Raspberry Pi</li>
+                        <li>ESP32/ESP8266</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Tecnologías Emergentes</h3>
+                    <ul>
+                        <li>5G y 6G</li>
+                        <li>Edge Computing</li>
+                        <li>Inteligencia Artificial</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Beneficios -->
+        <div class="slide">
+            <h2>Beneficios del IoT</h2>
+            
+            <div class="icon-item" style="margin: 20px 0;">
+                <h3>💰 Eficiencia Operativa y Ahorro de Costos</h3>
+                <p>Reducción de gastos energéticos, optimización de recursos, disminución de desperdicios</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 20px 0;">
+                <h3>📈 Mejor Toma de Decisiones</h3>
+                <p>Análisis de datos en tiempo real, predicciones basadas en patrones, insights accionables</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 20px 0;">
+                <h3>🔄 Automatización de Procesos</h3>
+                <p>Reducción de errores humanos, operaciones 24/7, respuestas inmediatas</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 20px 0;">
+                <h3>😊 Experiencia de Usuario Mejorada</h3>
+                <p>Servicios personalizados, mayor comodidad, soluciones adaptativas</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Desafíos y Riesgos -->
+        <div class="slide">
+            <h2>Desafíos y Riesgos del IoT</h2>
+            
+            <h3>🔒 Seguridad Cibernética</h3>
+            <p>Vulnerabilidades en dispositivos, ataques DDoS, riesgo de hackeo. El mercado de seguridad IoT alcanzará $34 mil millones en 2024.</p>
+            
+            <h3>🕵️ Privacidad de Datos</h3>
+            <p>Recopilación masiva de datos personales, riesgos de vigilancia, necesidad de regulaciones claras</p>
+            
+            <h3>🔌 Interoperabilidad</h3>
+            <p>Falta de estándares unificados, problemas de compatibilidad entre dispositivos de diferentes fabricantes</p>
+            
+            <h3>📊 Escalabilidad</h3>
+            <p>Gestión de millones de dispositivos, procesamiento de grandes volúmenes de datos, infraestructura de red</p>
+        </div>
+
+        <!-- Slide 10: El Futuro del IoT -->
+        <div class="slide">
+            <h2>El Futuro del IoT</h2>
+            
+            <div class="icon-item" style="margin: 25px 0;">
+                <h3>🤖 Integración con Inteligencia Artificial</h3>
+                <p>Dispositivos más inteligentes y autónomos, análisis predictivo avanzado, aprendizaje automático en tiempo real</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0;">
+                <h3>📡 Expansión del 5G y preparación para 6G</h3>
+                <p>Mayor velocidad de transmisión, menor latencia, mayor densidad de dispositivos conectados</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0;">
+                <h3>⚡ Edge Computing Más Potente</h3>
+                <p>Procesamiento local más rápido, reducción de dependencia de la nube, mayor privacidad</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0;">
+                <h3>🏭 IoT Industrial (IIoT) en Crecimiento</h3>
+                <p>Transformación digital de fábricas, mantenimiento predictivo avanzado, producción optimizada</p>
+            </div>
+        </div>
+
+        <!-- Slide 11: IoT y Desarrollo de Software -->
+        <div class="slide">
+            <h2>IoT y el Desarrollo de Software</h2>
+            
+            <h3>Oportunidades Profesionales</h3>
+            <p style="margin: 20px 0; font-size: 1.4em;">El IoT está creando una alta demanda de desarrolladores especializados en:</p>
+            
+            <ul style="font-size: 1.3em; margin-left: 50px;">
+                <li>Desarrollo de aplicaciones móviles para control de dispositivos</li>
+                <li>Programación de microcontroladores y sistemas embebidos</li>
+                <li>Desarrollo de APIs y servicios backend</li>
+                <li>Análisis y visualización de datos</li>
+                <li>Implementación de protocolos de seguridad</li>
+                <li>Desarrollo de interfaces de usuario intuitivas</li>
+            </ul>
+            
+            <div class="highlight" style="margin-top: 40px;">
+                <p><strong>Nota:</strong> El sector del IoT se proyecta crecer más del 65% entre 2024 y 2029, generando miles de empleos en tecnología.</p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Conclusiones -->
+        <div class="slide">
+            <h2>Conclusiones</h2>
+            
+            <div class="icon-item" style="margin: 25px 0; padding: 30px;">
+                <p style="font-size: 1.4em;">✓ El IoT está transformando radicalmente la forma en que vivimos, trabajamos y nos relacionamos con la tecnología</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0; padding: 30px;">
+                <p style="font-size: 1.4em;">✓ Su importancia es creciente en el desarrollo de software, creando nuevas especialidades y oportunidades</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0; padding: 30px;">
+                <p style="font-size: 1.4em;">✓ Los profesionales en TI deben prepararse con conocimientos en IoT para el mercado laboral</p>
+            </div>
+            
+            <div class="icon-item" style="margin: 25px 0; padding: 30px;">
+                <p style="font-size: 1.4em;">✓ La seguridad y privacidad deben considerarse desde el diseño (Security by Design)</p>
+            </div>
+            
+            <div class="stat-box" style="margin-top: 40px;">
+                <p style="font-size: 1.5em;">El futuro es conectado, inteligente y lleno de posibilidades</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: Referencias -->
+        <div class="slide">
+            <h2>Referencias y Recursos</h2>
+            
+            <h3>Fuentes de Información</h3>
+            <ul style="font-size: 1.2em; line-height: 2;">
+                <li>Statista - Estadísticas del Internet de las Cosas</li>
+                <li>IoT Analytics - State of IoT 2024</li>
+                <li>Fortune Business Insights - IoT Market Report</li>
+                <li>Gartner - IoT Technology Trends</li>
+            </ul>
+            
+            <h3 style="margin-top: 40px;">Plataformas para Aprender</h3>
+            <ul style="font-size: 1.2em; line-height: 2;">
+                <li>Arduino Official Documentation</li>
+                <li>AWS IoT Learning Path</li>
+                <li>Microsoft Azure IoT Developer Center</li>
+                <li>Google Cloud IoT Training</li>
+            </ul>
+        </div>
+
+        <!-- Slide 14: Gracias -->
+        <div class="slide">
+            <h1 style="margin-top: 150px;">¡Gracias por su atención!</h1>
+            <p class="subtitle" style="margin-top: 80px; font-size: 2em;">🌐 Internet de las Cosas (IoT)</p>
+            <p class="subtitle" style="margin-top: 40px; font-size: 1.3em;">Técnico en Ingeniería de Desarrollo de Software</p>
+            <p class="subtitle" style="margin-top: 60px; font-size: 1.1em; color: #999;">¿Preguntas?</p>
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <button id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+        
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">14</span>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n > totalSlides) currentSlide = totalSlides;
+            if (n < 1) currentSlide = 1;
+            
+            slides[currentSlide - 1].classList.add('active');
+            document.getElementById('currentSlide').textContent = currentSlide;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+        }
+        
+        function changeSlide(n) {
+            currentSlide += n;
+            showSlide(currentSlide);
+        }
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
